@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PEGASUS Centro Deportivo | Ontinyent</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#31302d",
+                      "on-tertiary-fixed": "#251a00",
+                      "error": "#ffb4ab",
+                      "inverse-surface": "#e5e2dd",
+                      "background": "#131411",
+                      "on-surface": "#e5e2dd",
+                      "tertiary-fixed": "#ffdf97",
+                      "secondary-fixed": "#e5e2e1",
+                      "tertiary-container": "#c7a85d",
+                      "surface-container-highest": "#353532",
+                      "surface-container-lowest": "#0e0e0c",
+                      "on-primary-fixed": "#241a00",
+                      "on-secondary-container": "#b7b5b4",
+                      "primary": "#e6c364",
+                      "primary-fixed-dim": "#e6c364",
+                      "surface-bright": "#3a3936",
+                      "surface-container-low": "#1c1c19",
+                      "surface-dim": "#131411",
+                      "on-tertiary-fixed-variant": "#5a4400",
+                      "on-background": "#e5e2dd",
+                      "on-surface-variant": "#d0c5b2",
+                      "primary-container": "#c9a84c",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "surface-container": "#20201d",
+                      "on-secondary": "#313030",
+                      "surface": "#131411",
+                      "surface-variant": "#353532",
+                      "tertiary-fixed-dim": "#e4c375",
+                      "outline": "#99907e",
+                      "tertiary": "#e4c375",
+                      "on-error-container": "#ffdad6",
+                      "surface-tint": "#e6c364",
+                      "surface-container-high": "#2a2a27",
+                      "inverse-primary": "#755b00",
+                      "secondary-container": "#474746",
+                      "on-secondary-fixed-variant": "#474746",
+                      "on-tertiary": "#3e2e00",
+                      "primary-fixed": "#ffe08f",
+                      "on-error": "#690005",
+                      "outline-variant": "#4d4637",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#584400",
+                      "on-tertiary-container": "#513d00",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "secondary": "#c8c6c5",
+                      "on-primary": "#3d2e00",
+                      "on-primary-container": "#503d00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Hanken Grotesk", "sans-serif"],
+                      "display-lg": ["Bebas Neue", "sans-serif"],
+                      "headline-lg": ["Bebas Neue", "sans-serif"],
+                      "body-md": ["Hanken Grotesk", "sans-serif"],
+                      "headline-md": ["Bebas Neue", "sans-serif"],
+                      "headline-lg-mobile": ["Bebas Neue", "sans-serif"],
+                      "label-caps": ["Hanken Grotesk", "sans-serif"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg": ["80px", {"lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "36px", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["36px", {"lineHeight": "40px", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Hanken+Grotesk:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        #mobile-menu { transform: translateY(-10px); opacity: 0; pointer-events: none; transition: all 0.25s ease-out; }
+        #mobile-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .maps-embed { filter: grayscale(1) invert(92%) contrast(83%); }
+        #toast { transform: translateY(20px); opacity: 0; transition: all 0.3s ease-out; }
+        #toast.show { transform: translateY(0); opacity: 1; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary selection:text-on-primary-fixed overflow-x-hidden">
+<!-- 1. FIXED NAVBAR -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 transition-all duration-300 ease-in-out">
+<div class="flex items-center gap-4">
+<img alt="PEGASUS Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChKOH5OrIFmONeNU-zewQVdlKpMewafSZhMzEajLob5UQiRNnSVRlwhnVYYB_CP7AHkvsruOV6oqWMX0ilHtPWokfRxZmZyT3zCSdEK-JX6v4rCNKAfy4nriCTFpTsnr_pA5gQsGSGq7X1jp_G6Eilq-qq7Puu0-ftdBTDd6BLC1d6Nep3mwPkutiEIRTXb4fNPeUdOm-Q-dyCZ-ZpZDk_nVgBXMQtCDdfqtI3gRomYqO94WAzWicJkBHBsFziEI6mO0IaAlZ1V5I"/>
+<span class="font-display-lg text-headline-md tracking-tighter text-primary hidden md:block mt-2">PEGASUS</span>
+</div>
+<ul class="hidden md:flex space-x-8 items-center">
+<li><a class="font-label-caps text-label-caps text-primary border-b-2 border-primary pb-1 block" href="#programas">PROGRAMAS</a></li>
+<li><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 px-2 py-1 block" href="#instalaciones">INSTALACIONES</a></li>
+<li><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 px-2 py-1 block" href="#elite">PLANES</a></li>
+<li><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 px-2 py-1 block" href="#contacto">CONTACTO</a></li>
+<li><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/10 px-2 py-1 block" href="tienda.html">TIENDA</a></li>
+</ul>
+<a class="hidden md:inline-block bg-primary text-on-primary-fixed font-label-caps text-label-caps px-6 py-3 hover:bg-primary-fixed-dim transition-colors uppercase" href="#elite">ÚNETE AHORA</a>
+<button class="md:hidden text-primary" id="menu-btn" onclick="toggleMenu()">
+<span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+</button>
+</nav>
+<!-- MOBILE MENU -->
+<div class="fixed top-20 left-0 w-full z-40 bg-surface-container-lowest border-b border-outline-variant/30 md:hidden px-margin-mobile py-6 flex flex-col gap-4" id="mobile-menu">
+<a class="font-label-caps text-label-caps text-on-surface py-2" href="#programas" onclick="toggleMenu()">PROGRAMAS</a>
+<a class="font-label-caps text-label-caps text-on-surface py-2" href="#instalaciones" onclick="toggleMenu()">INSTALACIONES</a>
+<a class="font-label-caps text-label-caps text-on-surface py-2" href="#elite" onclick="toggleMenu()">PLANES</a>
+<a class="font-label-caps text-label-caps text-on-surface py-2" href="#contacto" onclick="toggleMenu()">CONTACTO</a>
+<a class="font-label-caps text-label-caps text-on-surface py-2" href="tienda.html">TIENDA</a>
+<a class="bg-primary text-on-primary-fixed font-label-caps text-label-caps px-6 py-3 text-center uppercase mt-2" href="#elite" onclick="toggleMenu()">ÚNETE AHORA</a>
+</div>
+<!-- 2. HERO -->
+<header class="relative w-full min-h-screen flex items-center justify-center pt-20 border-b border-outline-variant/20">
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('images/instalaciones-2.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20"></div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto fade-in">
+<h1 class="font-display-lg text-[48px] leading-[48px] sm:text-[64px] sm:leading-[64px] md:text-[120px] md:leading-[110px] text-on-surface mb-6 uppercase tracking-wider drop-shadow-2xl">SUPERA TUS<br class="md:hidden"/> LÍMITES</h1>
+<p class="font-body-lg text-body-lg md:text-2xl text-on-surface-variant mb-10 max-w-2xl mx-auto">Centro deportivo de nueva generación en Ontinyent. Entrena con propósito.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="bg-primary text-on-primary-fixed font-label-caps text-label-caps px-8 py-4 hover:bg-primary-fixed-dim transition-all uppercase hover:shadow-[0_0_20px_rgba(201,168,76,0.3)]" href="#elite">Bienvenido a Pegasus</a>
+<a class="border-2 border-primary text-primary font-label-caps text-label-caps px-8 py-4 hover:bg-primary/10 transition-colors uppercase bg-background/50 backdrop-blur-sm" href="#instalaciones">Ver instalaciones</a>
+</div>
+</div>
+</header>
+<!-- 3. TRUST BAR -->
+<section class="bg-surface-container-low py-12 border-b border-outline-variant/20">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-8 text-center fade-in">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">NUEVO</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Centro recién inaugurado</p>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">7:00</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Apertura diaria</p>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">100%</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Equipamiento de última generación</p>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">100%</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Entrenadores certificados</p>
+</div>
+</div>
+</section>
+<!-- 4. SERVICES -->
+<section class="py-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop" id="programas">
+<div class="text-center mb-16 fade-in">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-on-surface">PROGRAMAS DE ALTO RENDIMIENTO</h2>
+<div class="w-16 h-[2px] bg-primary mx-auto mt-6"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Service Card 1 -->
+<div class="relative h-[360px] bg-surface-container group overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-colors fade-in">
+<div class="absolute inset-0 bg-cover bg-center grayscale transition-transform duration-700 group-hover:scale-105" style="background-image: url('images/instalaciones-musculacion.jpg')"></div>
+<div class="absolute inset-0 bg-background/70 group-hover:bg-background/50 transition-colors duration-300"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="w-12 h-[2px] bg-primary mb-4"></div>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mt-2">Musculación</h3>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">fitness_center</span>
+</div>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="relative h-[360px] bg-surface-container group overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-colors fade-in" style="transition-delay: 100ms;">
+<div class="absolute inset-0 bg-cover bg-center grayscale transition-transform duration-700 group-hover:scale-105" style="background-image: url('images/instalaciones-funcional.jpg')"></div>
+<div class="absolute inset-0 bg-background/70 group-hover:bg-background/50 transition-colors duration-300"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="w-12 h-[2px] bg-primary mb-4"></div>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mt-2">Cardio</h3>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">directions_run</span>
+</div>
+</div>
+</div>
+<!-- Service Card 3 -->
+<div class="relative h-[360px] bg-surface-container group overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-colors fade-in" style="transition-delay: 200ms;">
+<div class="absolute inset-0 bg-cover bg-center grayscale transition-transform duration-700 group-hover:scale-105" style="background-image: url('images/instalaciones-clases.jpg')"></div>
+<div class="absolute inset-0 bg-background/70 group-hover:bg-background/50 transition-colors duration-300"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="w-12 h-[2px] bg-primary mb-4"></div>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mt-2">Clases Dirigidas</h3>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">groups</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. INSTALACIONES (real photos) -->
+<section class="py-24 bg-surface-container-low border-y border-outline-variant/20" id="instalaciones">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16 fade-in">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-on-surface">NUESTRAS INSTALACIONES</h2>
+<div class="w-16 h-[2px] bg-primary mx-auto mt-6"></div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto mt-6">Maquinaria recién instalada, acabados en madera natural y una calle funcional propia para sprints, saltos y arrastres.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="relative h-[320px] md:h-[440px] bg-surface-container group overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-colors fade-in">
+<img alt="Zona de musculación de PEGASUS Centro Deportivo con máquinas de última generación" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/instalaciones-recepcion.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="w-12 h-[2px] bg-primary mb-4"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Zona de musculación</h3>
+</div>
+</div>
+<div class="relative h-[320px] md:h-[440px] bg-surface-container group overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-colors fade-in" style="transition-delay: 100ms;">
+<img alt="Sala panorámica de PEGASUS con calle de sprint y zona funcional" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/instalaciones-2.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="w-12 h-[2px] bg-primary mb-4"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Calle funcional &amp; zona panorámica</h3>
+</div>
+</div>
+<div class="relative h-[320px] md:h-[440px] bg-surface-container group overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-colors fade-in" style="transition-delay: 200ms;">
+<img alt="Sala de clases dirigidas PEGASUS con TRX y cardio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/instalaciones-clases.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="w-12 h-[2px] bg-primary mb-4"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Sala de clases dirigidas</h3>
+</div>
+</div>
+<div class="relative h-[320px] md:h-[440px] bg-surface-container group overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-colors fade-in" style="transition-delay: 300ms;">
+<img alt="Servicio de quiromasaje en PEGASUS Centro Deportivo" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/instalaciones-quiro.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="w-12 h-[2px] bg-primary mb-4"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Servicio de quiromasaje</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. PRICING -->
+<section class="py-24 bg-surface-container-lowest border-y border-outline-variant/20" id="elite">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16 fade-in">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-on-surface">INVIERTE EN TU POTENCIAL</h2>
+<div class="w-16 h-[2px] bg-primary mx-auto mt-6"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
+<!-- Básico -->
+<div class="bg-surface-container p-10 border border-outline-variant/20 fade-in">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4">BÁSICO</h3>
+<div class="font-display-lg text-[64px] leading-[64px] text-on-surface mb-8">€25<span class="text-xl text-on-surface-variant font-body-md tracking-normal">/mes</span></div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Sin permanencia</span></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Sala de musculación y cardio</span></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Taquilla incluida</span></li>
+</ul>
+<button class="w-full border-2 border-primary text-primary font-label-caps text-label-caps py-4 hover:bg-primary/10 transition-colors uppercase" onclick="selectPlan('Básico', 25)">Seleccionar</button>
+</div>
+<!-- Pro (Destacado) -->
+<div class="bg-surface-container p-12 border-2 border-primary shadow-[0_0_30px_rgba(201,168,76,0.1)] relative z-10 fade-in lg:-translate-y-4">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-on-primary-fixed font-label-caps text-label-caps px-4 py-1 tracking-widest whitespace-nowrap">MÁS POPULAR</div>
+<h3 class="font-label-caps text-label-caps text-primary mb-4 mt-4">PRO</h3>
+<div class="font-display-lg text-[80px] leading-[80px] text-on-surface mb-8 text-primary">€50<span class="text-xl text-on-surface-variant font-body-md tracking-normal">/mes</span></div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Todo lo del plan Básico</span></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Clases dirigidas ilimitadas</span></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Evaluación física inicial</span></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Acceso a zona funcional</span></li>
+</ul>
+<button class="w-full bg-primary text-on-primary-fixed font-label-caps text-label-caps py-5 hover:bg-primary-fixed-dim transition-colors uppercase" onclick="selectPlan('Pro', 50)">Seleccionar Pro</button>
+</div>
+<!-- Premium -->
+<div class="bg-surface-container p-10 border border-outline-variant/20 fade-in">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4">PREMIUM</h3>
+<div class="font-display-lg text-[64px] leading-[64px] text-on-surface mb-8">€75<span class="text-xl text-on-surface-variant font-body-md tracking-normal">/mes</span></div>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Todo lo del plan Pro</span></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">2 sesiones con entrenador personal/mes</span></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Plan nutricional personalizado</span></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm font-bold">check</span><span class="font-body-md text-on-surface">Toallas premium incluidas</span></li>
+</ul>
+<button class="w-full border-2 border-primary text-primary font-label-caps text-label-caps py-4 hover:bg-primary/10 transition-colors uppercase" onclick="selectPlan('Premium', 75)">Seleccionar</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. CONFIANZA (sustituye a reseñas, el centro es nuevo) -->
+<section class="py-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16 fade-in">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-on-surface">POR QUÉ ENTRENAR EN PEGASUS</h2>
+<div class="w-16 h-[2px] bg-primary mx-auto mt-6"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-6 italic">Somos un centro recién inaugurado en Ontinyent, así que todavía no tenemos reseñas — serás de los primeros en escribirlas. Mientras tanto, esto es lo que puedes esperar de nosotros desde el primer día:</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-container p-8 border border-outline-variant/20 fade-in">
+<span class="material-symbols-outlined text-primary text-3xl mb-4 block">fitness_center</span>
+<h3 class="font-headline-md text-[20px] text-on-surface uppercase mb-2">Equipo 100% nuevo</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Maquinaria de última generación recién instalada, sin desgaste ni esperas.</p>
+</div>
+<div class="bg-surface-container p-8 border border-outline-variant/20 fade-in" style="transition-delay: 100ms;">
+<span class="material-symbols-outlined text-primary text-3xl mb-4 block">verified</span>
+<h3 class="font-headline-md text-[20px] text-on-surface uppercase mb-2">Entrenadores certificados</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Todo nuestro equipo cuenta con certificación oficial en entrenamiento y nutrición.</p>
+</div>
+<div class="bg-surface-container p-8 border border-outline-variant/20 fade-in" style="transition-delay: 200ms;">
+<span class="material-symbols-outlined text-primary text-3xl mb-4 block">event_available</span>
+<h3 class="font-headline-md text-[20px] text-on-surface uppercase mb-2">Sin permanencia</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Cancela cuando quieras, sin letra pequeña ni penalizaciones ocultas.</p>
+</div>
+<div class="bg-surface-container p-8 border border-outline-variant/20 fade-in" style="transition-delay: 300ms;">
+<span class="material-symbols-outlined text-primary text-3xl mb-4 block">cleaning_services</span>
+<h3 class="font-headline-md text-[20px] text-on-surface uppercase mb-2">Higiene diaria</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Limpieza y desinfección de todos los equipos cada día, antes de tu llegada.</p>
+</div>
+</div>
+</section>
+<!-- 8. CONTACT & FORM -->
+<section class="py-24 bg-surface-container-lowest border-t border-outline-variant/20" id="contacto">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div class="fade-in">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-on-surface mb-8">ÚNETE A LA ÉLITE</h2>
+<!-- Google Maps style info card -->
+<div class="bg-surface-container border border-outline-variant/20 mb-8">
+<div class="p-6 md:p-8 pb-0">
+<h3 class="font-headline-md text-[26px] text-on-surface uppercase leading-tight">PEGASUS Centro deportivo</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2">Centro deportivo · Ontinyent</p>
+</div>
+<!-- Action row, mimics Google Maps place actions -->
+<div class="flex gap-2 px-4 md:px-6 py-6 overflow-x-auto">
+<a class="flex flex-col items-center gap-2 min-w-[68px] text-center group" href="https://www.google.com/maps/dir/?api=1&amp;destination=Carrer%20del%20M%C3%BAsic%20Mart%C3%ADnez%20Valls%2C%2043%2C%2046870%20Ontinyent%2C%20Valencia" rel="noopener" target="_blank">
+<span class="w-11 h-11 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary-fixed transition-colors"><span class="material-symbols-outlined">directions</span></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Cómo llegar</span>
+</a>
+<button class="flex flex-col items-center gap-2 min-w-[68px] text-center group" id="save-btn" onclick="toggleSave()">
+<span class="w-11 h-11 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary-fixed transition-colors"><span class="material-symbols-outlined" id="save-icon">bookmark_border</span></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase" id="save-label">Guardar</span>
+</button>
+<a class="flex flex-col items-center gap-2 min-w-[68px] text-center group" href="https://www.google.com/maps/search/gimnasios+cerca+de+Ontinyent" rel="noopener" target="_blank">
+<span class="w-11 h-11 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary-fixed transition-colors"><span class="material-symbols-outlined">near_me</span></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Cercano</span>
+</a>
+<button class="flex flex-col items-center gap-2 min-w-[68px] text-center group" onclick="sendToPhone()">
+<span class="w-11 h-11 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary-fixed transition-colors"><span class="material-symbols-outlined">phone_iphone</span></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Enviar al teléfono</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[68px] text-center group" onclick="shareLocation()">
+<span class="w-11 h-11 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary-fixed transition-colors"><span class="material-symbols-outlined">share</span></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Compartir</span>
+</button>
+</div>
+<div class="border-t border-outline-variant/20 px-6 md:px-8 py-6 space-y-4">
+<div class="flex items-start gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<p class="font-body-md text-body-md">Carrer del Músic Martínez Valls, 43<br/>46870 Ontinyent, Valencia</p>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<p class="font-body-md text-body-md"><span id="open-status">Cerrado</span> · Abre a las 7:00</p>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">call</span>
+<a class="font-body-md text-body-md hover:text-primary transition-colors" href="tel:+34687951521">687 95 15 21</a>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">pin_drop</span>
+<p class="font-body-md text-body-md">R9FW+9R Ontinyent <span class="text-on-surface-variant/60 text-sm">(código Plus)</span></p>
+</div>
+</div>
+<div class="border-t border-outline-variant/20 px-6 md:px-8 py-4 flex flex-wrap items-center justify-between gap-2">
+<span class="font-body-md text-[12px] text-on-surface-variant/70">Tu historial de Google Maps</span>
+<a class="font-body-md text-[12px] text-primary hover:underline" href="#">Añadir una etiqueta</a>
+</div>
+</div>
+<!-- Real map embed -->
+<div class="w-full h-64 border border-outline-variant/30 overflow-hidden">
+<iframe class="maps-embed w-full h-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Carrer%20del%20M%C3%BAsic%20Mart%C3%ADnez%20Valls%2C%2043%2C%2046870%20Ontinyent%2C%20Valencia&amp;output=embed" style="border:0;"></iframe>
+</div>
+</div>
+<div class="bg-surface-container p-8 md:p-12 border border-outline-variant/20 fade-in">
+<form class="space-y-8" id="contact-form" onsubmit="handleContactSubmit(event)">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase tracking-widest">Nombre Completo</label>
+<input class="w-full bg-background border-outline-variant/30 text-on-surface p-4 focus:border-primary focus:ring-1 focus:ring-primary transition-colors rounded-none placeholder-on-surface-variant/50" placeholder="Tu nombre" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase tracking-widest">Email</label>
+<input class="w-full bg-background border-outline-variant/30 text-on-surface p-4 focus:border-primary focus:ring-1 focus:ring-primary transition-colors rounded-none placeholder-on-surface-variant/50" placeholder="tu@email.com" required="" type="email"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase tracking-widest">Mensaje (Opcional)</label>
+<textarea class="w-full bg-background border-outline-variant/30 text-on-surface p-4 focus:border-primary focus:ring-1 focus:ring-primary transition-colors rounded-none placeholder-on-surface-variant/50" placeholder="¿En qué podemos ayudarte?" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary-fixed font-label-caps text-label-caps py-5 hover:bg-primary-fixed-dim transition-colors uppercase" type="submit">Enviar Solicitud</button>
+<p class="text-center font-body-md text-[13px] text-primary hidden" id="contact-success">¡Solicitud enviada! Te contactaremos muy pronto.</p>
+</form>
+</div>
+</div>
+</section>
+<!-- Mobile Sticky CTA -->
+<div class="fixed bottom-0 left-0 w-full p-4 bg-background/90 backdrop-blur-md border-t border-outline-variant/30 z-50 md:hidden">
+<a class="block text-center w-full bg-primary text-on-primary-fixed font-label-caps text-label-caps py-4 hover:bg-primary-fixed-dim transition-colors uppercase" href="#elite">ÚNETE AHORA</a>
+</div>
+<!-- 9. FOOTER -->
+<footer class="bg-surface-container-lowest w-full text-on-surface-variant pt-16 pb-24 md:pb-16 px-margin-mobile md:px-margin-desktop border-t border-outline-variant/20">
+<div class="max-w-container-max mx-auto flex flex-col items-center gap-8">
+<div class="font-display-lg text-headline-md text-primary tracking-tighter">
+<img alt="PEGASUS Logo" class="h-16 w-auto grayscale brightness-200 contrast-200 mix-blend-screen opacity-80 hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChKOH5OrIFmONeNU-zewQVdlKpMewafSZhMzEajLob5UQiRNnSVRlwhnVYYB_CP7AHkvsruOV6oqWMX0ilHtPWokfRxZmZyT3zCSdEK-JX6v4rCNKAfy4nriCTFpTsnr_pA5gQsGSGq7X1jp_G6Eilq-qq7Puu0-ftdBTDd6BLC1d6Nep3mwPkutiEIRTXb4fNPeUdOm-Q-dyCZ-ZpZDk_nVgBXMQtCDdfqtI3gRomYqO94WAzWicJkBHBsFziEI6mO0IaAlZ1V5I"/>
+</div>
+<ul class="flex flex-wrap justify-center gap-6 font-body-md text-body-md">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="tienda.html">TIENDA</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">POLÍTICA DE PRIVACIDAD</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">TÉRMINOS Y CONDICIONES</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">COOKIES</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#contacto">CONTACTO</a></li>
+</ul>
+<div class="font-body-md text-body-md text-center opacity-60">
+                © 2026 PEGASUS CENTRO DEPORTIVO. TODOS LOS DERECHOS RESERVADOS.
+            </div>
+</div>
+</footer>
+<!-- Toast -->
+<div class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 bg-surface-container-high border border-primary/40 text-on-surface font-label-caps text-label-caps px-6 py-3 z-[60]" id="toast">Copiado</div>
+<script>
+        // Fade-in on scroll
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in').forEach((element) => observer.observe(element));
+
+            // "Cerrado / Abierto" según la hora real (abre a las 7:00, cierra a las 22:00)
+            const hour = new Date().getHours();
+            const statusEl = document.getElementById('open-status');
+            if (statusEl) {
+                if (hour >= 7 && hour < 22) {
+                    statusEl.textContent = 'Abierto';
+                    statusEl.classList.add('text-primary');
+                } else {
+                    statusEl.textContent = 'Cerrado';
+                }
+            }
+
+            // Restore "Guardado" state
+            if (localStorage.getItem('pegasus_saved') === '1') {
+                setSavedUI(true);
+            }
+        });
+
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('open');
+            const icon = document.getElementById('menu-icon');
+            icon.textContent = icon.textContent === 'menu' ? 'close' : 'menu';
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function setSavedUI(saved) {
+            const icon = document.getElementById('save-icon');
+            const label = document.getElementById('save-label');
+            icon.textContent = saved ? 'bookmark_added' : 'bookmark_border';
+            label.textContent = saved ? 'Guardado' : 'Guardar';
+        }
+
+        function toggleSave() {
+            const isSaved = localStorage.getItem('pegasus_saved') === '1';
+            localStorage.setItem('pegasus_saved', isSaved ? '0' : '1');
+            setSavedUI(!isSaved);
+            showToast(isSaved ? 'Eliminado de guardados' : 'Guardado en tus sitios');
+        }
+
+        function sendToPhone() {
+            const link = 'https://maps.app.goo.gl/?q=Carrer+del+Music+Martinez+Valls+43+Ontinyent';
+            navigator.clipboard?.writeText(link).catch(() => {});
+            showToast('Enlace copiado · ábrelo desde tu móvil');
+        }
+
+        function shareLocation() {
+            const data = { title: 'PEGASUS Centro deportivo', text: 'Carrer del Músic Martínez Valls, 43, 46870 Ontinyent, Valencia', url: window.location.href };
+            if (navigator.share) {
+                navigator.share(data).catch(() => {});
+            } else {
+                navigator.clipboard?.writeText(data.text + ' — ' + data.url).catch(() => {});
+                showToast('Dirección copiada al portapapeles');
+            }
+        }
+
+        function selectPlan(name, price) {
+            sessionStorage.setItem('pegasus_plan', JSON.stringify({ name, price }));
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+            showToast('Plan ' + name + ' (€' + price + '/mes) seleccionado');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-success').classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => document.getElementById('contact-success').classList.add('hidden'), 4000);
+        }
+    </script>
+</body></html>
