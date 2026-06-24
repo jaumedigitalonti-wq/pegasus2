@@ -4,10 +4,6 @@ Dos páginas estáticas (HTML + Tailwind por CDN + JavaScript vanilla, sin neces
 
 - `index.html` — Landing del gimnasio (programas, instalaciones, planes, contacto con ficha estilo Google Maps).
 - `tienda.html` — Tienda de suplementos con carrito de la compra funcional (añadir, cambiar cantidad, filtrar por categoría, checkout simulado).
-- `images/` — Las dos fotos reales del gimnasio que me pasaste, usadas en la sección "Nuestras instalaciones".
-
-## Cómo verlo en local
-
 No hace falta backend ni `npm install`. Dos opciones:
 
 **Opción A — doble clic**
